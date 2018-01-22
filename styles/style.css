@@ -1,0 +1,113 @@
+﻿body {
+    background-color: lightgrey;
+    font-family: sans-serif;
+    margin: 0 auto;
+    max-width: 800px;
+    font-size: 10px;
+}
+
+header {
+    font-size: 1.5rem;
+    background-color: darkgreen;
+    line-height: 80px;
+    padding: 0 20px;
+}
+
+header input {
+    width: 90%;
+    height: 30px;
+    text-indent: 15px;
+}
+
+header button {
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    background: url('../images/plus.png') no-repeat center;
+    position: relative;
+    bottom: 5px;
+    border: 0;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    margin: 0;
+    letter-spacing: 3px;
+}
+
+input {
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+}
+
+h2 {
+    width: 100%;
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 10px 0;
+}
+
+ul {
+    font-size: 1.2rem;
+    list-style-type: none;
+    text-align: left;
+}
+
+span {
+    width: 75%;
+    height: 35px;
+    float: left;
+    font-size: 1.2rem;
+    padding: 10px 20px 5px 10px;
+    text-align: left;
+    text-indent: 10px;
+}
+
+li button {
+    cursor: pointer;
+    margin: 10px;
+    float: left;
+}
+
+ul#todo:empty::after {
+    content: 'You have nothing to do!';
+}
+
+ul#done:empty::after {
+    content: 'You have yet to complete any tasks.';
+}
+
+ul#todo,
+ul#done {
+    width: 100%;
+    display:block;
+    text-align: center;
+    font-size: 0.8rem;
+    padding: inherit;
+}
+
+li button:nth-of-type(1) {
+    background: url('../images/check.png') no-repeat center;
+    width: 32px;
+    height: 32px;
+    border: 0;
+}
+
+li button:nth-of-type(2) {
+    background: url('../images/rubbish.png') no-repeat center;
+    width: 32px;
+    height: 32px;
+    border: 0;
+}
+
+ul#done li button:nth-of-type(1) {
+    background: url('../images/checked.png') no-repeat center;
+    width: 32px;
+    height: 32px;
+    border: 0;
+}
