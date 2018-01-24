@@ -3,68 +3,89 @@
     done: []
 };
 
-function dataObjectUpdated() {
+function updateDataInLocalStorage() {
   localStorage.setItem('todoList', JSON.stringify(data));
 }
 
 var listToDo = document.querySelector('#todo');
 var listDone = document.querySelector('#done');
-var submitButton = document.querySelector('button');
-var input = document.querySelector('input');
-var ul = document.querySelector('ul');
+var submitButton = document.querySelector('#add');
+var newTask = document.querySelector('#adding');
 
 function addData() {    
-    var value = input.value;
-    input.value = '';
+    var value = newTask.value;
+    newTask.value = '';
     
     if(value === '' || value === ' ') {
         return alert('This field couldn\'t be empty!');
     };
     
     data.todo.push(value);
-    dataObjectUpdated();
+    updateDataInLocalStorage();
     
     var li = document.createElement('li');
     var span = document.createElement('span');
     var doneButton = document.createElement('button');
     var removeButton = document.createElement('button');
+    var editButton = document.createElement('button');
+    
+    doneButton.classList.add('done');
+    removeButton.classList.add('remove');
+    editButton.classList.add('edit');
     
     li.appendChild(span);
     span.textContent = value;
     li.appendChild(doneButton);
     li.appendChild(removeButton);
+    li.appendChild(editButton);
+    editButton.textContent = 'Edit';
     listToDo.appendChild(li);
     
     listToDo.insertBefore(li, listToDo.childNodes[0]);
     
-    removeButton.addEventListener('click', function(e) {
-        listToDo.removeChild(li);
-        data.todo.splice(data.todo.indexOf(value), 1);
-    });
+    removeButton.addEventListener('click', function() {
+        var parent = this.parentNode.parentNode;
+        var id = parent.id;
+        
+        if (id === 'todo') {
+            data.todo.splice(data.todo.indexOf(value), 1);            
+        } else {
+            data.done.splice(data.done.indexOf(value), 1);
+        }
+        updateDataInLocalStorage();
+        
+        parent.removeChild(li);
+    })
     
-    removeButton.addEventListener('click', function(e) {
-        listDone.removeChild(li);
-        data.done.splice(data.done.indexOf(value), 1);
-    });
-    
-    doneButton.addEventListener('click', function(e) {
+    doneButton.addEventListener('click', function() {
         listDone.appendChild(li);
         listDone.insertBefore(li, listDone.childNodes[0]);
         
         data.todo.splice(data.todo.indexOf(value), 1);
         data.done.push(value);
-        dataObjectUpdated();
+        updateDataInLocalStorage();
     });
     
-    function rename() {
-        var newText = prompt('What should this item be renamed to?')
+    editButton.onclick = function() {
+        var listItem = this.parentNode;
+        var newInput = document.createElement('input');
+        var replaceButton = document.createElement('button');
+        replaceButton.textContent = 'add';
+        newInput.type = 'text';
+        span = listItem.replaceChild(newInput, span);
+        replaceButton.classList.add('replace');
+        listItem.appendChild(replaceButton);
         
-        if (!newText || newText === '' || newText === ' ') {
-            return false;
-        }
-        span.textContent = newText;
+        replaceButton.onclick = function() {
+            replaceValue = newInput.value;
+            span.textContent = replaceValue;
+            newInput = listItem.replaceChild(span, newInput);
+            listItem.removeChild(replaceButton);
+        };
+        
     };
-    span.addEventListener('dblclick', rename);
 };
 
 submitButton.addEventListener('click', addData);
+
+document.addEventListener('DOMContentLoaded', document);
