@@ -72,6 +72,7 @@ function addData() {
         var replaceButton = document.createElement('button');
         replaceButton.textContent = 'add';
         newInput.type = 'text';
+        newInput.value = span.textContent;
         span = listItem.replaceChild(newInput, span);
         replaceButton.classList.add('replace');
         listItem.appendChild(replaceButton);
