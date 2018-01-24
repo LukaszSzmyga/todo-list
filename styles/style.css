@@ -25,7 +25,7 @@ header button#add {
     height: 36px;
     background: url('../images/plus.png') no-repeat center;
     position: relative;
-    bottom: 5px;
+    top: 13px;
     border: 0;
 }
 
@@ -137,7 +137,7 @@ button.replace {
     height: 45px;
     padding: 10px;
     position: relative;
-    top: -50px;
-    left: -170px;
+    top: -48px;
+    left: -167px;
     text-align: center;
 }

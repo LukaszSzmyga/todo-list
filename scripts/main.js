@@ -1,4 +1,6 @@
-﻿var data = JSON.parse(localStorage.getItem('todoList')) || {
+﻿document.addEventListener("DOMContentLoaded", function() {
+
+var data = JSON.parse(localStorage.getItem('todoList')) || {
     todo: [],
     done: []
 };
@@ -83,10 +85,9 @@ function addData() {
             newInput = listItem.replaceChild(span, newInput);
             listItem.removeChild(replaceButton);
         };
-        
     };
 };
-
+    
 submitButton.addEventListener('click', addData);
-
-document.addEventListener('DOMContentLoaded', document);
+ 
+});
