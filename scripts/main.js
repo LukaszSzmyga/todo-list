@@ -1,6 +1,4 @@
-﻿document.addEventListener("DOMContentLoaded", function() {
-
-var data = JSON.parse(localStorage.getItem('todoList')) || {
+﻿var data = JSON.parse(localStorage.getItem('todoList')) || {
     todo: [],
     done: []
 };
@@ -8,6 +6,8 @@ var data = JSON.parse(localStorage.getItem('todoList')) || {
 function updateDataInLocalStorage() {
   localStorage.setItem('todoList', JSON.stringify(data));
 }
+
+document.addEventListener("DOMContentLoaded", function() {
 
 var listToDo = document.querySelector('#todo');
 var listDone = document.querySelector('#done');
