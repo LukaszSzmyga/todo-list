@@ -54,12 +54,12 @@ h2 {
 
 div.todo {
     height: 300px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 div.done {
     height: 300px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 ul {
